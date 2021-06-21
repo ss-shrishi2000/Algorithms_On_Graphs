@@ -1,24 +1,50 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include<bits/stdc++.h>
+using namespace std;
+# define vi vector<int>
+# define N 1e5+5
 
-using std::vector;
-using std::queue;
 
-int bipartite(vector<vector<int> > &adj) {
-  //write your code here
-  return -1;
-}
+vi g[N];
+int colour[N];
 
-int main() {
-  int n, m;
-  std::cin >> n >> m;
-  vector<vector<int> > adj(n, vector<int>());
-  for (int i = 0; i < m; i++) {
-    int x, y;
-    std::cin >> x >> y;
-    adj[x - 1].push_back(y - 1);
-    adj[y - 1].push_back(x - 1);
+void dfs(int node)
+{
+  for(int &i : g)
+  {
+    if(colour[i]==colour[node])
+    {
+      cout<<"0";
+      exit(0);
+    }
+    if(colour[i]==0)
+    {
+      colour[i]= 3-colour[node];
+      dfs(i);
+    }
   }
-  std::cout << bipartite(adj);
 }
+
+int main()
+{
+  int x,y,n,m;
+  cin>>n>>m;
+  for(int i=0;i<m;i++)
+  {
+    cin>>x>>y;
+    g[x].push_back(y);
+    g[y].push_back(x);
+  }
+  for(int i=1;i<=n;i++)
+    colour[i]=0;
+  
+  for(int i=1;i<=n;i++)
+  {
+    if(colour[i]==0)
+      dfs(i);
+  }
+  cout<<1;
+  return 0;
+}
+    
+  
+  
