@@ -1,14 +1,7 @@
-#include <iostream>
-#include <limits>
-#include <vector>
-#include <queue>
-
-using std::vector;
-using std::queue;
-using std::pair;
-using std::priority_queue;
-
-void shortest_paths(vector<vector<int> > &adj, vector<vector<int> > &cost, int s, vector<long long> &distance, vector<int> &reachable, vector<int> &shortest) {
+#include <bits/stdc++.h>
+using namespace std;
+void shortest_paths(vector<vector<int> > &adj, vector<vector<int> > &cost, int s, vector<long long> &distance, vector<int> &reachable, vector<int> &shortest) 
+{
   //write your code here
   reachable[s] = 1;
   distance[s] = 0;
